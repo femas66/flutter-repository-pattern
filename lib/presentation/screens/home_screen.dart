@@ -3,6 +3,7 @@ import 'package:flutter_repository_pattern/domain/models/user.dart';
 import '../../domain/repositories/user_repository.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String routeName = '/';
   final UserRepository userRepository;
 
   HomeScreen({required this.userRepository});

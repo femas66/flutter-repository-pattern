@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_repository_pattern/data/datasources/remote_data_source.dart';
-import 'package:flutter_repository_pattern/data/repositories/user_repository.dart';
-import 'package:flutter_repository_pattern/domain/repositories/user_repository.dart';
-import 'package:flutter_repository_pattern/presentation/screens/home_screen.dart';
+import 'package:flutter_repository_pattern/routes/app_pages.dart';
 
 void main() {
-  final remoteDataSource = RemoteDataSource();
-  final userRepository = UserRepositoryImpl(
-    remoteDataSource: remoteDataSource,
-  );
-  runApp(MyApp(
-    userRepository: userRepository,
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final UserRepository userRepository;
+  const MyApp({super.key});
 
-  const MyApp({super.key, required this.userRepository});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomeScreen(
-        userRepository: userRepository,
+      theme: ThemeData(
+        useMaterial3: true,
       ),
+      initialRoute: AppPages.INITIAL,
+      routes: AppPages.routes,
     );
   }
 }
